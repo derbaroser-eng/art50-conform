@@ -23,6 +23,12 @@ interoperable, robust and reliable, as far as technically feasible.
   (Article 111(4), inserted by Regulation (EU) 2026/1744).
 - Systems placed on the market on or after 2 August 2026 have no grace period.
 
+## Write-up
+
+A hands-on account of what actually survives a re-encode, with the raw command
+output and the failure modes:
+https://dev.to/aurum_revenue/i-marked-a-png-for-the-eu-ai-act-then-re-encoded-it-the-mark-was-gone-2m82
+
 ## Not legal advice
 
 This is engineering evidence, not legal advice. It does not create a lawyer-client
