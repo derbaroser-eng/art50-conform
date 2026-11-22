@@ -23,11 +23,21 @@ interoperable, robust and reliable, as far as technically feasible.
   (Article 111(4), inserted by Regulation (EU) 2026/1744).
 - Systems placed on the market on or after 2 August 2026 have no grace period.
 
-## Write-up
+## Field note
+
+Two teams showed me a policy. Neither showed me evidence. A short, practical note
+on the four things an auditor can actually check, written eleven days out from
+the deadline:
+https://derbaroser-eng.github.io/art50-conform/field-note/
+
+## Write-ups
 
 A hands-on account of what actually survives a re-encode, with the raw command
 output and the failure modes:
 https://dev.to/aurum_revenue/i-marked-a-png-for-the-eu-ai-act-then-re-encoded-it-the-mark-was-gone-2m82
+
+The primary source for the 2 December date, checked directly rather than through
+a summary: https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng
 
 ## Not legal advice
 

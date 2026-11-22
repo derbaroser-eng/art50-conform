@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two teams showed me a policy. Neither showed me evidence. — Elena Brandt</title>
+<meta name="description" content="A field note on the Article 50(2) marking evidence an auditor can actually test, ahead of the 2 December 2026 deadline.">
+<style>
+:root{--ink:#0f1220;--muted:#5b6172;--line:#e3e6ee;--accent:#1f5fd6;--bg:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:52px 24px 96px}
+.tag{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+h1{font-size:2.15rem;line-height:1.14;margin:0 0 10px;letter-spacing:-.02em}
+.byline{color:var(--muted);font-size:.9rem;margin:0 0 30px}
+h2{font-size:1.18rem;margin:34px 0 8px}
+p{margin:0 0 14px}
+a{color:var(--accent)}
+ul{padding-left:22px;margin:0 0 16px}
+li{margin:7px 0}
+.box{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:22px 0;background:#fafbfe}
+.warn{border-color:#e8c9a0;background:#fff8ef}
+.cta{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;text-decoration:none;padding:13px 24px;border-radius:10px;font-weight:600}
+.cta:hover{filter:brightness(1.08)}
+code{background:#f2f4fa;padding:2px 6px;border-radius:6px;font-size:.88em}
+footer{margin-top:52px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="tag">Field note · 22 November 2026</div>
+<h1>Two teams showed me a policy. Neither showed me evidence.</h1>
+<p class="byline">By Elena Brandt</p>
+
+<p>I asked three teams building image generators the same question last week: <em>show me the evidence that your outputs are marked under Article 50(2).</em> Two sent me a PDF policy. One sent a screenshot of a settings toggle. Not one of them could show me a dated verify log from the actual pipeline.</p>
+
+<p>That is the gap I want to write about, because on <strong>2 December</strong> the grace period for systems already on the market runs out. Eleven days, at the time I am writing this.</p>
+
+<h2>The date is real, and it is not where people look</h2>
+
+<p>Article 50's transparency duties applied from 2 August 2026. The extra time for older systems is not inside Article 50 at all — it was added as a new paragraph 4 to Article 111 by <a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng" rel="noopener">Regulation (EU) 2026/1744</a>. The operative sentence is short: providers of systems placed on the market before 2 August 2026 must take the necessary steps to comply with Article 50(2) by 2 December 2026. I checked it against the EUR-Lex text rather than a summary, because most summaries get the article number wrong.</p>
+
+<p>If your system launched after 2 August, there is no transitional period. You were already on the clock.</p>
+
+<h2>A policy is a statement of intent. Evidence is a test result.</h2>
+
+<p>Those are different objects, and only one of them can be checked by somebody who does not trust you. A policy says what you intend to do. Evidence says: this file, on this date, produced this result, and here is the command that reproduces it. An auditor cannot run a PDF. They can run a log.</p>
+
+<p>So this is the list I now ask teams to put in front of me. It fits on one page and none of it is expensive.</p>
+
+<ul>
+<li><strong>A role map.</strong> For every feature that emits synthetic output, write down who is the provider and who is the deployer. If you wrap, fine-tune or resell someone else's model, you are very likely a provider of the wrapped system. This is the mistake that changes which duty lands on you.</li>
+<li><strong>A marking spec.</strong> Say which mechanism you use where: embedded metadata where you control the file, a hash-bound sidecar where you do not. "We use C2PA" or "we embed XMP" is a mechanism, not a spec, until you say which outputs it covers.</li>
+<li><strong>A dated verify log.</strong> From the pipeline, not retyped into a document. Date, file, command, exit code. The boring parts are what make it credible.</li>
+<li><strong>A survival result.</strong> Re-encode, resize, thumbnail, repost — then verify again. Write down what happened, including the failures.</li>
+</ul>
+
+<div class="box warn">
+<p><strong>The result that changed my mind about metadata.</strong> I marked a PNG correctly, with an XMP packet carrying the IPTC digital source type, and the verify step passed. Then a thumbnailer rewrote the file the way a CMS or a social platform does. The picture was pixel-identical. The mark was gone. "We embed metadata" is not an answer to "survived what?" — and if you have not run that test yet, you do not yet know what your evidence says.</p>
+</div>
+
+<h2>What I do about it</h2>
+
+<p>I produce a one-pipeline <strong>Article 50(2) Evidence Report</strong>: a dated document with each finding mapped to the four statutory properties — effective, interoperable, robust, reliable — plus a reproducible method note so the result can be re-run after a model or prompt change. It is the artifact I wish those three teams had been able to send me.</p>
+
+<p><a class="cta" href="https://derbaroser-eng.github.io/art50-conform/" rel="noopener">See the Evidence Report — EUR 490</a></p>
+
+<p>If you want the raw commands behind the re-encode test, I wrote them up in more detail <a href="https://dev.to/aurum_revenue/i-marked-a-png-for-the-eu-ai-act-then-re-encoded-it-the-mark-was-gone-2m82" rel="noopener">here</a>. There is also a lighter <a href="https://derbaroser-eng.github.io/art50-marking/" rel="noopener">marking readiness pack</a> if you only need the checklist and templates.</p>
+
+<p>If you do one thing this week: take one real output from your pipeline, mark it, push it through the ugliest transformation your product actually performs, and run verify. The result is worth more than another policy document.</p>
+
+<footer>This is engineering evidence, not legal advice. It is not a conformity certificate and creates no lawyer-client relationship. Legal conclusions about your obligations belong with qualified counsel.</footer>
+</div>
+</body>
+</html>
