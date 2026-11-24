@@ -58,3 +58,7 @@ obligations remain with qualified counsel.
 ## Contact
 
 derbaroser@gmail.com · one pipeline per report
+
+## More writing
+
+- [Eight days to the Article 50(2) marking deadline - the exact rule and the check I ran](https://dev.to/aurum_revenue/eight-days-to-the-article-502-marking-deadline-the-exact-rule-and-the-check-i-ran-2bj)
