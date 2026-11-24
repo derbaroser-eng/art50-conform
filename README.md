@@ -36,6 +36,16 @@ A hands-on account of what actually survives a re-encode, with the raw command
 output and the failure modes:
 https://dev.to/aurum_revenue/i-marked-a-png-for-the-eu-ai-act-then-re-encoded-it-the-mark-was-gone-2m82
 
+## The deadline is close
+
+As of 24 November 2026 the transitional window for systems placed on the market before 2 August 2026 closes in eight days, on 2 December 2026. The rule and the date come from the EUR-Lex text of Regulation (EU) 2026/1744:
+https://eur-lex.europa.eu/eli/reg/2026/1744
+
+A measured check on a 64x64 PNG: embedding the IPTC trainedAlgorithmicMedia XMP block took the file from 161 to 974 bytes and the verifier reported it marked. One ordinary re-encode brought it back to 161 bytes and the mark was gone. That gap is what the report measures.
+
+New write-up, published 24 November 2026:
+https://dev.to/aurum_revenue/eight-days-to-the-eu-ai-act-marking-deadline-i-re-encoded-my-own-image-and-the-mark-disappeared-1fji
+
 The primary source for the 2 December date, checked directly rather than through
 a summary: https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng
 
