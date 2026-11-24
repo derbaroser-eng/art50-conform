@@ -57,7 +57,7 @@ obligations remain with qualified counsel.
 
 ## Contact
 
-derbaroser@gmail.com · one pipeline per report
+Not sure the report fits? Ask in the [pre-sale question thread](https://github.com/derbaroser-eng/art50-conform/issues/1) or write to me at [derbaroser@gmail.com](mailto:derbaroser@gmail.com?subject=Article%2050(2)%20report%20question). I answer before you pay, and I will tell you if you do not need the report. One pipeline per report.
 
 ## More writing
 
