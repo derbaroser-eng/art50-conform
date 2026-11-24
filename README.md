@@ -49,6 +49,11 @@ https://dev.to/aurum_revenue/eight-days-to-the-eu-ai-act-marking-deadline-i-re-e
 The primary source for the 2 December date, checked directly rather than through
 a summary: https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng
 
+
+## More on the four properties
+
+I tested each of the four words in Article 50(2) against a real image pipeline: https://dev.to/aurum_revenue/article-502-says-effective-interoperable-robust-and-reliable-i-tested-all-four-1e0e
+
 ## Not legal advice
 
 This is engineering evidence, not legal advice. It does not create a lawyer-client
