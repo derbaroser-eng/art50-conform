@@ -44,6 +44,8 @@ That gap is what this report measures. Not the policy. The file, after a real re
 
 ## The checks, in public
 
+- [Article 50(2) says the marking must be robust. I ran four checks and one failed.](https://dev.to/aurum_revenue/article-502-says-the-marking-must-be-robust-i-ran-four-checks-and-one-failed-2lp0)
+
 - [Field note: two teams showed me a policy, neither showed me evidence](https://derbaroser-eng.github.io/art50-conform/field-note/)
 - [I marked a PNG for the EU AI Act, then re-encoded it. The mark was gone.](https://dev.to/aurum_revenue/i-marked-a-png-for-the-eu-ai-act-then-re-encoded-it-the-mark-was-gone-2m82)
 - [Article 50(2) says "effective, interoperable, robust and reliable" — I tested all four](https://dev.to/aurum_revenue/article-502-says-effective-interoperable-robust-and-reliable-i-tested-all-four-1e0e)
