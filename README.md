@@ -62,3 +62,8 @@ derbaroser@gmail.com · one pipeline per report
 ## More writing
 
 - [Eight days to the Article 50(2) marking deadline - the exact rule and the check I ran](https://dev.to/aurum_revenue/eight-days-to-the-article-502-marking-deadline-the-exact-rule-and-the-check-i-ran-2bj)
+
+## Before you buy
+
+Seven straight answers about the report, including what it cannot prove and the measured re-encode result that motivated it:
+https://derbaroser-eng.github.io/art50-conform/buyer-faq/
