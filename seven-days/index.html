@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Seven days to 2 December: a decision note on the Article 50(2) marking check — Elena Brandt</title>
+<meta name="description" content="A plain decision note on the EU AI Act Article 50(2) machine-readable marking deadline of 2 December 2026, with a real measured PNG check and an honest answer on who needs an evidence report.">
+<style>
+:root{--ink:#16181d;--muted:#5d6470;--line:#e3e5ea;--paper:#fbfbf9;--accent:#8a2b1b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:64px 22px 96px}
+.kicker{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:2.15rem;line-height:1.18;letter-spacing:-.02em;margin:.5em 0 .2em}
+h2{font-size:1.3rem;margin:2.4em 0 .6em;letter-spacing:-.01em}
+p{margin:0 0 1.15em}
+.meta{color:var(--muted);font-size:14px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:34px}
+blockquote{margin:1.6em 0;padding:0 0 0 20px;border-left:3px solid var(--accent);color:#333842;font-style:italic}
+pre{background:#f0f1ee;border:1px solid var(--line);border-radius:6px;padding:16px;overflow-x:auto;font-size:14px;line-height:1.5}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+a{color:var(--accent)}
+a:hover{text-decoration-thickness:2px}
+ol,ul{padding-left:1.3em}
+li{margin:.45em 0}
+.cta{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:13px 20px;border-radius:6px;font-weight:600;margin:.4em .5em .4em 0}
+.cta.alt{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.note{background:#f2f1ec;border-radius:6px;padding:18px 20px;margin:2em 0;font-size:15px;color:#414750}
+footer{border-top:1px solid var(--line);margin-top:3.5em;padding-top:22px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<div class="kicker">A decision note · 25 November 2026</div>
+<h1>Seven days to 2 December: do you actually need an Article 50(2) evidence report?</h1>
+<p class="meta">By Elena Brandt · engineering evidence, not legal advice · 6 minute read</p>
+
+<p>I have spent the last few weeks writing about the machine-readable marking duty in Article 50(2) of the EU AI Act. The question I get most is not about the technology. It is: <em>do I need to pay for this at all?</em></p>
+
+<p>Fair question. Here is the decision note I would send a colleague, with the exact legal text, a real measurement I ran this morning, and the cases where my answer is "no, you do not need it."</p>
+
+<h2>The date, from the source rather than a blog post</h2>
+
+<p>Article 50 transparency obligations applied from 2 August 2026. Then the Digital Omnibus, formally <a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj">Regulation (EU) 2026/1744</a>, added a paragraph 4 to Article 111. It reads:</p>
+
+<blockquote>Providers of AI systems, including general-purpose AI systems, generating synthetic audio, image, video or text content, that have been placed on the market before 2 August 2026 shall take the necessary steps in order to comply with Article 50(2) by 2 December 2026.</blockquote>
+
+<p>Two things people get wrong. First, this is a <strong>provider</strong> duty about machine-readable marking, not the deployer disclosure duty in Article 50(4). Second, the grace period is only for systems placed on the market before 2 August 2026. If yours went out on or after that date, there was no extra window. The Commission's <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-111">AI Act Service Desk</a> says the same thing in plainer words.</p>
+
+<h2>What "robust" looked like on my own machine this morning</h2>
+
+<p>Article 50(2) says outputs must be marked in a machine-readable format and detectable as artificially generated or manipulated, with the marking effective, interoperable, robust and reliable as far as technically feasible. Rather than argue about the adjectives, I took a 64×64 PNG and ran the marking tool I publish in the open:</p>
+
+<pre>$ python marking.py mark  p.png  m.png
+mark exit 0  MARKED  (p.png 179 bytes -> m.png 992 bytes)
+
+$ python marking.py verify m.png
+exit 0  MARKED (embedded-xmp)
+
+$ python marking.py verify p.png
+exit 1  NOT MARKED (embedded-xmp)</pre>
+
+<p>So the mark is there and the verifier finds it. That is the easy half. The hard half is what happens on the way through a CMS, a chat app or an image optimiser, because the requirement is about the output as it leaves the pipeline, not the moment before. In an earlier run, a routine re-encode removed a mark of the same kind without anything adversarial happening. That gap is the whole reason these checks need to be written down rather than assumed.</p>
+
+<p>The source is public if you want to run it yourself: <a href="https://github.com/derbaroser-eng/art50-marking">art50-marking on GitHub</a>. I would rather you check your own file first than take my word for it.</p>
+
+<h2>The three questions I actually ask</h2>
+
+<ol>
+<li><strong>Can you point to a marked output and a verifier result, both dated?</strong> If not, you have a policy, not evidence. That is the gap worth closing before you spend anything.</li>
+<li><strong>Does the mark survive the ordinary path your file takes?</strong> Re-encode it the way your CMS or CDN does. If it disappears, you have a real finding, and you can fix it yourself.</li>
+<li><strong>Is somebody outside your team going to ask you for this in writing?</strong> A regulator, a customer's procurement team, a lender. If yes, the dated and reproducible record is what you are really buying.</li>
+</ol>
+
+<p>If your pipeline is simple, the mark survives, and nobody needs a written record, stop here. You do not need my report. I mean that.</p>
+
+<h2>Where the report earns its price</h2>
+
+<p>People buy the EUR 490 report when they need the result written down, dated, and mapped to the statutory wording, with a method note they can re-run after a model or prompt change. Forty-nine times out of fifty they could do the check themselves. The fiftieth is a meeting where somebody asks for evidence and "we checked it" is not enough.</p>
+
+<p>It is one pipeline per report, one payment, no subscription. I answer questions before you pay, including telling you that you do not need it:</p>
+
+<p><a class="cta" href="https://buy.stripe.com/7sY6oK5HQ8ogg1jgWs4ko07">Get the evidence report — EUR 490 once</a><a class="cta alt" href="https://github.com/derbaroser-eng/art50-conform/issues/1">Ask me before you buy</a></p>
+
+<p>If you want the longer set of honest answers first, I wrote them out here: <a href="https://derbaroser-eng.github.io/art50-conform/buyer-faq/">seven questions before you buy</a>. And if you want the reasoning behind all of this, it started with <a href="https://derbaroser-eng.github.io/art50-conform/field-note/">two teams showing me a policy and neither showing me evidence</a>.</p>
+
+<div class="note">This is engineering evidence, not legal advice. It does not create a lawyer-client relationship and is not a conformity certificate. Legal conclusions about your obligations belong to qualified counsel. Dates and wording above are cited to the Official Journal text linked here, so you can check me.</div>
+
+<footer>Elena Brandt · Article 50(2) evidence work · <a href="https://derbaroser-eng.github.io/art50-conform/">offer page</a></footer>
+</main>
+</body>
+</html>

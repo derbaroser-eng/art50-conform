@@ -71,3 +71,7 @@ Not sure the report fits? Ask in the [pre-sale question thread](https://github.c
 
 Seven straight answers about the report, including what it cannot prove and the measured re-encode result that motivated it:
 https://derbaroser-eng.github.io/art50-conform/buyer-faq/
+
+## Seven days to 2 December
+
+Who actually needs the Article 50(2) evidence report, with the exact rule from the Official Journal and a measured PNG check: https://derbaroser-eng.github.io/art50-conform/seven-days/
