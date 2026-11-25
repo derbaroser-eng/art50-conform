@@ -76,3 +76,7 @@ https://derbaroser-eng.github.io/art50-conform/buyer-faq/
 ## Seven days to 2 December
 
 Who actually needs the Article 50(2) evidence report, with the exact rule from the Official Journal and a measured PNG check: https://derbaroser-eng.github.io/art50-conform/seven-days/
+
+## Published note
+
+I wrote up the full decision note, including who does **not** need the report: [Seven days to 2 December](https://dev.to/aurum_revenue/seven-days-to-2-december-i-measured-the-article-502-mark-then-wrote-down-who-actually-needs-an-467h).
