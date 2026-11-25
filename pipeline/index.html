@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your EU AI Act mark is in the file. It's not in the pipeline.</title>
+<meta name="description" content="The Article 50(2) marking window closes 2 December. I re-encoded my own PNG and watched the mark disappear.">
+<style>body{max-width:44rem;margin:2.5rem auto;padding:0 1.2rem;font:16px/1.65 sans-serif;color:#1a1a1a}h1{font-size:1.9rem;line-height:1.25}a{color:#0a58ca}li{margin:.4rem 0}footer{margin-top:2.5rem;border-top:1px solid #ddd;padding-top:1rem;font-size:.9rem;color:#555}</style>
+</head><body>
+<p><a href="../">&larr; Article 50(2) Evidence Report</a></p>
+<h1>Your EU AI Act mark is in the file. It's not in the pipeline.</h1>
+<p>The transition window for Article 50(2) machine-readable marking closes on <strong>2 December 2026</strong>. Eight days from where I'm writing this.</p>
+<p>I spent last week poking at my own image pipeline, and the thing that surprised me wasn't the marking itself. It was how many places the mark quietly disappears.</p>
+<p>First, the rule. Article 50(2) of Regulation (EU) 2024/1689 says providers of AI systems that generate synthetic audio, image, video or text content must mark the output in a machine-readable format, and that the marking must be <em>effective, interoperable, robust and reliable, as far as technically feasible</em>. That last phrase is doing a lot of work. It is why a policy document is not evidence.</p>
+<p>So I went looking for evidence. Here is what I actually found in my own pipeline.</p>
+<p>I embed an IPTC <code>digitalSourceType</code> XMP block &mdash; <code>trainedAlgorithmicMedia</code> &mdash; directly in the file. For JPEG that's an APP1 segment; for PNG it's an <code>iTXt</code> chunk named <code>XML:com.adobe.xmp</code>. The reader checks the same bytes the writer puts in, so there's no "trust me" step.</p>
+<p>Then I hash the file and write a sidecar: sha256, source type, generator version. The sidecar is the part that survives, because it doesn't depend on any one image codec.</p>
+<p>Here's the bit that got me. Re-encode the image once, normally, and the XMP block is gone. The file still looks identical. On a 64x64 PNG I went from 974 bytes back to 161, and the verifier flipped from "marked" to "not marked." No error. No warning. Just a smaller file.</p>
+<p>That's the whole problem in one sentence: the mark was effective at the moment I wrote it and not robust one step later.</p>
+<p>I don't think that means the rule is impossible. I think it means the check has to happen at the <strong>end</strong> of the pipeline, on the bytes you actually ship &mdash; not at the moment you generate them.</p>
+<p>Three things I now do before I call a pipeline done:</p>
+<ol><li>Check the final bytes, not the in-memory object. Whatever your CDN or export step emits is the thing that matters.</li>
+<li>Keep a sidecar with a sha256 so you can prove <em>which</em> bytes you checked.</li>
+<li>Re-run the check after every model or prompt change, because "as far as technically feasible" moves when the pipeline moves.</li></ol>
+<p>None of this is legal advice. I'm an engineer, not a lawyer. But "we mark our outputs" is not the same as "here is the marked file, here is its hash, and here is the check re-run after the last deploy."</p>
+<p>I turned this into a short dated evidence report for teams who need the statutory text attached to each finding. It's EUR 490, one pipeline, and I'll tell you straight in the <a href="https://github.com/derbaroser-eng/art50-conform/issues/1">pre-sale thread</a> if you don't need it.</p>
+<p><a href="https://buy.stripe.com/7sY6oK5HQ8ogg1jgWs4ko07">Get the evidence report &mdash; EUR 490</a></p>
+<footer>Written by Elena Brandt &middot; <a href="https://github.com/derbaroser-eng/art50-marking">the marking code is public</a></footer>
+</body></html>
