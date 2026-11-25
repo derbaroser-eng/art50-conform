@@ -44,6 +44,8 @@ That gap is what this report measures. Not the policy. The file, after a real re
 
 ## The checks, in public
 
+- [Your EU AI Act mark is in the file. It's not in the pipeline](https://derbaroser-eng.github.io/art50-conform/pipeline/)
+
 - [Article 50(2) says the marking must be robust. I ran four checks and one failed.](https://dev.to/aurum_revenue/article-502-says-the-marking-must-be-robust-i-ran-four-checks-and-one-failed-2lp0)
 
 - [Field note: two teams showed me a policy, neither showed me evidence](https://derbaroser-eng.github.io/art50-conform/field-note/)
